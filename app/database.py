@@ -39,3 +39,10 @@ def init_db():
         db.add(AdminState(id=1))
         db.commit()
     db.close()
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
