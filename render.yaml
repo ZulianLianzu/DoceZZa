@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: dulceria-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: TELEGRAM_TOKEN
+        sync: false # ¡OJO! Esto lo tendrás que rellenar tú en Render manualmente
+      - key: ADMIN_ID
+        value: 52946005
+      - key: DAILY_PROMPT_TIME
+        value: "14:00" # Hora UTC para la pregunta diaria
+      - key: DATABASE_URL
+        value: sqlite:///./data.db
+      - key: WEBHOOK_PATH
+        value: /webhook
+      - key: SECRET_TOKEN
+        generateValue: true # Render inventará una contraseña secreta automáticamente
