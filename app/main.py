@@ -25,8 +25,9 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
-@app.get("/health")
-async def health(): return {"status": "ok"}
+@app.get("/")
+async def root():
+    return {"status": "bot is running"}
 
 @app.post(settings.WEBHOOK_PATH)
 async def webhook(req: Request):
