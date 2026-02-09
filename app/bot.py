@@ -29,12 +29,6 @@ def get_main_menu():
     b.adjust(1)
     return b.as_markup()
 
-def get_admin_kb(order_id):
-    b = InlineKeyboardBuilder()
-    b.button(text="✅", callback_data=f"ok_{order_id}")
-    b.button(text="❌", callback_data=f"no_{order_id}")
-    return b.as_markup()
-
 # --- CLIENTES ---
 @router.message(Command("start"))
 async def start(m: Message):
